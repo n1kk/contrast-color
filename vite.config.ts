@@ -6,9 +6,6 @@ import reactRefresh from "@vitejs/plugin-react-refresh";
 
 export default defineConfig({
     plugins: [reactRefresh(), viteSingleFile(), minifyHtml()],
-    server: {
-        port: 3333,
-    },
     root: "src/demo",
     build: {
         outDir: path.resolve("dist/demo"),

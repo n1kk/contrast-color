@@ -11,7 +11,7 @@
     "build": "tsc -b ./tsconfig.json",
     "test": "jest",
     "demo:dev": "vite",
-    "demo:build": "vite build && mkdir -p docs && cp ./dist/demo/index.html docs "
+    "demo:build": "vite build"
   },
   "keywords": [
     "text",

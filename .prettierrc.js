@@ -16,7 +16,7 @@ module.exports = {
 
     // everything in lf, win<->unix conversion only causes issues
     endOfLine: "lf",
-    // modern monitors are bin enough to fit two panes of 120 side by side
+    // modern monitors are big enough to fit two panes of 120 side by side
     printWidth: 120,
     // makes nested branching abuse more obvious
     tabWidth: 4,

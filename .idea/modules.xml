@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/balck-or-white.iml" filepath="$PROJECT_DIR$/.idea/balck-or-white.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/light-or-dark.iml" filepath="$PROJECT_DIR$/.idea/light-or-dark.iml" />
     </modules>
   </component>
 </project>
