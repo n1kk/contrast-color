@@ -1,71 +1,54 @@
-type LightOrDarkOptions = {
-    dark: string;
-    light: string;
-    threshold: number;
-    onBadColor: string;
+export type LightOrDarkOptions = {
+    dark?: string;
+    light?: string;
+    threshold?: number;
+    onBadColor?: string;
+    lumFactors?: [r: number, g: number, b: number];
 };
 
-const defaultThreshold = 82;
+type OptGetter<T extends object> = {
+    <K extends keyof T>(key: K): Partial<T>[K] | undefined;
+    <K extends keyof T>(key: K, _default: Required<T>[K]): Required<T>[K];
+};
 
-export function lightOrDark(color: string): string;
-export function lightOrDark(options: Partial<LightOrDarkOptions>, color: string): string;
-export function lightOrDark(...args: any[]): string {
-    let options: Partial<LightOrDarkOptions> | undefined, color: string;
-    if (args.length > 1) {
-        [options, color] = args;
-    } else {
-        [color] = args;
-    }
-
+export function lightOrDark(this: LightOrDarkOptions | void, color: string, options?: LightOrDarkOptions): string {
     const rgb = hexToRGB(color);
+    const opt: OptGetter<LightOrDarkOptions> = (key, _default?) => {
+        return options?.[key] ?? this?.[key] ?? _default;
+    };
 
     if (!rgb) {
-        if (options?.onBadColor) {
-            return options?.onBadColor;
-        }
+        const onBadColor = opt("onBadColor");
+        if (onBadColor) return onBadColor;
         throw new Error(`Should be a valid hex, #RGB or #RRGGBB: '${color}'`);
     }
 
+    const colorLuminosity = (r: number, g: number, b: number): number => {
+        const [lr, lg, lb] = opt("lumFactors", [0.2126, 0.7152, 0.0722]);
+        return (lr * r + lg * g + lb * b) / 255;
+    };
     const luminance = colorLuminosity(...rgb); // 0 - 1
-    const brightness = perceivedBrightness(luminance); // 0 - 100
 
-    // console.log("blackOrWhite", args, luminance, brightness);
+    // console.log("lightOrDark", { color, luminance, this: this, options });
 
-    const threshold = options?.threshold ?? defaultThreshold;
-    const light = options?.light || "#eee";
-    const dark = options?.dark || "#222";
+    const threshold = opt("threshold", 0.57);
+    const light = opt("light", "#eee");
+    const dark = opt("dark", "#222");
 
-    return brightness > threshold || threshold == 0 ? dark : light;
+    return luminance > threshold || threshold == 0 ? dark : light;
 }
 
 function hexToRGB(hex: string, noThrow?: boolean): [r: number, b: number, g: number] | undefined {
-    if (hex.startsWith("#")) {
-        hex = hex.substring(1);
-    }
-
-    if (hex.length === 3) {
-        return [
-            parseInt(hex[0] + hex[0], 16), //
-            parseInt(hex[1] + hex[1], 16),
-            parseInt(hex[2] + hex[2], 16),
-        ];
-    } else if (hex.length === 6) {
-        return [
-            parseInt(hex.substring(0, 2), 16), //
-            parseInt(hex.substring(2, 4), 16),
-            parseInt(hex.substring(4, 6), 16),
-        ];
-    }
+    if (hex.startsWith("#")) hex = hex.substring(1);
+    const chunks = chunkString(hex, hex.length == 3 ? 1 : 2);
+    const toDev = (hex: string) => parseInt(hex, 16);
+    return chunks.length >= 3 ? (chunks.map(toDev) as [number, number, number]) : undefined;
 }
 
-function colorLuminosity(r: number, g: number, b: number): number {
-    return (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-}
-
-function perceivedBrightness(luminance: number): number {
-    if (luminance <= 216 / 24389) {
-        return luminance * (24389 / 27);
+function chunkString(str: string, n: number): string[] {
+    if (n > 1) {
+        return str.match(new RegExp(".{1," + n + "}", "g")) as string[];
     } else {
-        return Math.pow(luminance, 1 / 3) * 116 - 16;
+        return [...str].map(_ => _ + _);
     }
 }
