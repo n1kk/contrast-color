@@ -6,7 +6,7 @@ import reactRefresh from "@vitejs/plugin-react-refresh";
 
 export default defineConfig({
     plugins: [reactRefresh(), viteSingleFile(), minifyHtml()],
-    root: "src/demo",
+    root: "demo",
     build: {
         outDir: path.resolve("dist/demo"),
         target: "esnext",
@@ -17,7 +17,7 @@ export default defineConfig({
         chunkSizeWarningLimit: 100000000,
         rollupOptions: {
             inlineDynamicImports: true,
-            input: path.resolve("src/demo/index.html"),
+            input: path.resolve("demo/index.html"),
             output: {
                 manualChunks: () => "everything.js",
             },
