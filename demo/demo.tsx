@@ -1,11 +1,4 @@
-import React, {
-    type CSSProperties,
-    type PropsWithChildren,
-    RefObject,
-    useLayoutEffect,
-    useRef,
-    useState
-} from "react";
+import React, { type CSSProperties, type PropsWithChildren, RefObject, useLayoutEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import "./demo.css";
 import { lightOrDark, LightOrDarkOptions } from "../src/light-or-dark";
@@ -155,7 +148,7 @@ function App() {
                 </pre>
             </div>
             <div className="section h-box">
-                <ColorGrid options={{ threshold, lumFactors: [lumR, lumG, lumB] }} steps={9} />
+                <ColorGrid options={{ threshold, lumFactors: [lumR, lumG, lumB] }} steps={16} />
             </div>
         </div>
     );
