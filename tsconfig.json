@@ -6,7 +6,6 @@
     "allowJs": true,
     "skipLibCheck": false,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
@@ -21,5 +20,5 @@
     "removeComments": true
   },
   "include": ["src/light-or-dark.ts"],
-  "exclude": ["node_modules", "src/demo"]
+  "exclude": ["node_modules"]
 }
