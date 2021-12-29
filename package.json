@@ -11,7 +11,8 @@
     "build": "tsc -b ./tsconfig.json",
     "test": "jest",
     "demo:dev": "vite",
-    "demo:build": "vite build"
+    "demo:build": "vite build",
+    "demo:copy": "cp ./dist/demo/index.html ./index.html"
   },
   "keywords": [
     "text",
