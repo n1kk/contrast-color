@@ -1,4 +1,11 @@
-import React, { type CSSProperties, type PropsWithChildren, RefObject, useLayoutEffect, useRef, useState } from "react";
+import React, {
+    type CSSProperties,
+    type PropsWithChildren,
+    RefObject,
+    useLayoutEffect,
+    useRef,
+    useState
+} from "react";
 import ReactDOM from "react-dom";
 import "./demo.css";
 import { lightOrDark, LightOrDarkOptions } from "../src/light-or-dark";
@@ -6,7 +13,7 @@ import Color from "color";
 
 type Wrapper<T = any> = (props: PropsWithChildren<T>) => any;
 
-const ColorTag: Wrapper<{ hex: string; name?: String; options?: LightOrDarkOptions; bullet?: boolean }> = props => {
+const ColorTag: Wrapper<{ hex: string; name?: string; options?: LightOrDarkOptions; bullet?: boolean }> = props => {
     const lod = lightOrDark.bind(props.options);
     const style: CSSProperties = {
         backgroundColor: props.hex,
@@ -117,7 +124,7 @@ export function generateLightGrid(x: number, y: number): string[][] {
 }
 
 function App() {
-    const [threshold, setThreshold] = useState(0.57);
+    const [threshold, setThreshold] = useState(0.35);
     const [lumR, setLumR] = useState(0.2126);
     const [lumG, setLumG] = useState(0.7152);
     const [lumB, setLumB] = useState(0.0722);
