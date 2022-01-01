@@ -32,7 +32,7 @@ export function lightOrDark(this: LightOrDarkOptions | void, color: string, opti
         const [lr, lg, lb] = opt("lumFactors", [0.2126, 0.7152, 0.0722]);
         return lr * sRGB(r) + lg * sRGB(g) + lb * sRGB(b);
     };
-    const luminance = colorLuminosity(...rgb); // 0 - 1
+    const luminance /* 0-1 */ = colorLuminosity(...rgb);
 
     const threshold = opt("threshold", 0.35);
     const light = opt("light", "#eee");
@@ -43,15 +43,9 @@ export function lightOrDark(this: LightOrDarkOptions | void, color: string, opti
 
 function hexToRGB(hex: string, noThrow?: boolean): [r: number, b: number, g: number] | undefined {
     if (hex.startsWith("#")) hex = hex.substring(1);
-    const chunks = chunkString(hex, hex.length == 3 ? 1 : 2);
-    const toDev = (hex: string) => parseInt(hex, 16);
-    return chunks.length >= 3 ? (chunks.map(toDev) as [number, number, number]) : undefined;
-}
-
-function chunkString(str: string, n: number): string[] {
-    if (n > 1) {
-        return str.match(new RegExp(".{1," + n + "}", "g")) as string[];
-    } else {
-        return [...str].map(_ => _ + _);
-    }
+    if (hex.length < 3 || hex.length == 4 || hex.length == 5) return undefined;
+    const toDec = (hex: string) => parseInt(hex, 16);
+    return hex.length == 3
+        ? [toDec(hex[0] + hex[0]), toDec(hex[1] + hex[1]), toDec(hex[2] + hex[2])]
+        : [toDec(hex[0] + hex[1]), toDec(hex[2] + hex[3]), toDec(hex[4] + hex[5])];
 }
