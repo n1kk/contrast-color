@@ -19,6 +19,9 @@
     "color",
     "foreground"
   ],
+  "files": [
+    "lib/**/*.{js,ts}"
+  ],
   "author": "n1kk",
   "license": "MIT",
   "devDependencies": {
