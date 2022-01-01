@@ -23,15 +23,18 @@ export function lightOrDark(this: LightOrDarkOptions | void, color: string, opti
         throw new Error(`Should be a valid hex, #RGB or #RRGGBB: '${color}'`);
     }
 
+    const sRGB = (channel: number) => {
+        channel /= 255;
+        return channel <= 0.039_28 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4;
+    };
+
     const colorLuminosity = (r: number, g: number, b: number): number => {
         const [lr, lg, lb] = opt("lumFactors", [0.2126, 0.7152, 0.0722]);
-        return (lr * r + lg * g + lb * b) / 255;
+        return lr * sRGB(r) + lg * sRGB(g) + lb * sRGB(b);
     };
     const luminance = colorLuminosity(...rgb); // 0 - 1
 
-    // console.log("lightOrDark", { color, luminance, this: this, options });
-
-    const threshold = opt("threshold", 0.57);
+    const threshold = opt("threshold", 0.35);
     const light = opt("light", "#eee");
     const dark = opt("dark", "#222");
 
