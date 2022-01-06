@@ -11,7 +11,9 @@ Use cases:
 - Get contrast ratio between two colors
 - Check if two colors have sufficient contrast difference
 
-Demo page: https://n1kk.github.io/light-or-dark/
+TypeScript Docs: https://n1kk.github.io/contrast-color/
+
+Demo page: https://n1kk.github.io/contrast-color/demo.html
 
 ![demo](demo/demo.gif)
 

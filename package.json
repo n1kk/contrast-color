@@ -8,13 +8,13 @@
     "types": "lib/light-or-dark.d.ts"
   },
   "scripts": {
+    "build:all": "pnpm build && pnpm docs:build && pnpm demo:build && pnpm demo:copy",
     "build": "tsc -b ./tsconfig.json",
     "test": "jest",
     "docs:build": "typedoc src/index.ts",
     "demo:dev": "vite",
     "demo:build": "vite build && pnpm demo:copy",
-    "demo:copy": "cp ./dist/demo/index.html ./docs/demo.html",
-    "build:all": "pnpm build && pnpm docs:build && pnpm demo:build && pnpm demo:copy"
+    "demo:copy": "cp ./dist/demo/index.html ./docs/demo.html"
   },
   "keywords": [
     "text",
