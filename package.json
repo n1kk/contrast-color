@@ -1,6 +1,6 @@
 {
-  "name": "txt-color",
-  "version": "1.0.0",
+  "name": "@n1kk/contrast-color",
+  "version": "0.1.0",
   "description": "Helps to determine what color of text goes best for a given background, light or dark (and vice versa).",
   "main": "src/index.ts",
   "publishConfig": {
