@@ -19,6 +19,8 @@
     "downlevelIteration": true,
     "removeComments": true
   },
-  "include": ["src/light-or-dark.ts"],
+  "include": [
+    "src/index.ts"
+  ],
   "exclude": ["node_modules"]
 }

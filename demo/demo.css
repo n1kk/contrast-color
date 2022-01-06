@@ -56,12 +56,46 @@ body {
 }
 
 .color-tag {
+    position: relative;
     font-size: 14px;
     font-family: "Source Code Pro", monospace;
     padding: 0.2em 0.5em;
     margin: 0.2em;
     border-radius: 0.3em;
     width: 80px;
+    overflow: hidden;
+    background: var(--grad), var(--bg);
+}
+
+.color-tag:before {
+    position: relative;
+    font-size: 14px;
+    font-family: "Source Code Pro", monospace;
+    padding: 0.2em 0.5em;
+    margin: 0.2em;
+    border-radius: 0.3em;
+    width: 20px;
+    overflow: hidden;
+}
+
+.prop-bar {
+    /*background-color: black;*/
+    height: 5px;
+    margin-bottom: 1px;
+    /*backdrop-filter: invert(100%);*/
+}
+
+.bg-bars {
+    height: 100%;
+    width: 60px;
+}
+
+.brightness {
+    background-color: #ff2a2a;
+}
+
+.contrast {
+    background-color: #0f0fa1;
 }
 
 #brightnessSlider {
@@ -73,8 +107,9 @@ code {
     font-size: 14px;
     font-family: "Source Code Pro", monospace;
     border-radius: 0.3em;
-    padding: 0.3rem 0.5rem;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
-    background-color: #404040;
-    color: #eeeeee;
+    padding: 0.1rem 0.3rem;
+    margin: 0.3rem;
+    box-shadow: 0 0 0.3rem rgba(0, 0, 0, 0.2);
+    background-color: #eeeeee;
+    color: #404040;
 }

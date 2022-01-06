@@ -1,27 +1,36 @@
-import React, {
-    type CSSProperties,
-    type PropsWithChildren,
-    RefObject,
-    useLayoutEffect,
-    useRef,
-    useState
-} from "react";
+import React, { type CSSProperties, type PropsWithChildren, RefObject, useLayoutEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
 import "./demo.css";
-import { lightOrDark, LightOrDarkOptions } from "../src/light-or-dark";
 import Color from "color";
+import { colorsContrast, contrastingTextColor, hexToRGB } from "../src";
 
 type Wrapper<T = any> = (props: PropsWithChildren<T>) => any;
 
-const ColorTag: Wrapper<{ hex: string; name?: string; options?: LightOrDarkOptions; bullet?: boolean }> = props => {
-    const lod = lightOrDark.bind(props.options);
+const ColorTag: Wrapper<{
+    hex: string;
+    name?: string;
+    threshold: number;
+    bullet?: boolean;
+    showContrast?: boolean;
+}> = props => {
+    const pct = (n: number) => ((100 * n) >> 0) + "%";
+    const color = contrastingTextColor(props.hex, { threshold: props.threshold });
+    const contrast = colorsContrast(props.hex, color);
+    const rgba1 = `rgba(${hexToRGB(color).join(",")}, 0.3)`;
+
     const style: CSSProperties = {
         backgroundColor: props.hex,
-        color: lod(props.hex),
-    };
+        color: color,
+        "--bg": props.hex,
+        "--pct": pct(contrast),
+        "--grad": props.showContrast
+            ? `linear-gradient(to right, ${rgba1} ${pct(contrast)}, transparent ${pct(contrast)})`
+            : undefined,
+    } as CSSProperties;
+
     return (
         <div className="color-tag centered" style={style}>
-            {props.name || props.hex}
+            <div style={{ zIndex: 1 }}>{props.name || props.hex}</div>
         </div>
     );
 };
@@ -51,7 +60,7 @@ const Slider: Wrapper<{
                 step={props.step ?? 1}
                 style={{ width: `${props.width || 300}px` }}
             />
-            <span className="value">{value}</span>
+            <code className="value">{value}</code>
         </div>
     );
 };
@@ -80,21 +89,44 @@ const useGrid = (myRef: RefObject<HTMLDivElement>, y: number) => {
     return { width, height, grid };
 };
 
-const ColorGrid: Wrapper<{ steps: number; options?: LightOrDarkOptions }> = props => {
+const ColorGrid: Wrapper<{ steps: number; threshold: number; showContrast?: boolean }> = props => {
     const ref = useRef<HTMLDivElement>(null);
     const { grid } = useGrid(ref, props.steps);
 
     const gridStyle: CSSProperties = {
         gridTemplateColumns: grid.map(_ => "1fr").join(" "),
     };
+
+    const rowsMinContrast = (row: string[]) => {
+        const contrastDiffs = row.map(color =>
+            colorsContrast(color, contrastingTextColor(color, { threshold: props.threshold })),
+        );
+        const min = Math.min(...contrastDiffs);
+        return min;
+    };
+
+    const minContrast = Math.min(...grid.map(rowsMinContrast));
+
     return (
-        <div className="centered" ref={ref}>
+        <div className="centered v-box" ref={ref}>
+            {props.showContrast && (
+                <div>
+                    {" "}
+                    Minimum BG/FG Luminance difference: <code>{minContrast.toFixed(6)}</code>
+                </div>
+            )}
             <div className="grid" style={gridStyle}>
+                {props.showContrast && grid.map((row, i) => <code key={i}>{rowsMinContrast(row).toFixed(4)}</code>)}
                 {grid.map((row, i) => (
                     <div key={i}>
                         {row.map(color => (
-                            <div>
-                                <ColorTag key={color} hex={color} options={props.options} />
+                            <div key={color} className="v-box">
+                                <ColorTag
+                                    key={color}
+                                    hex={color}
+                                    threshold={props.threshold}
+                                    showContrast={props.showContrast}
+                                />
                             </div>
                         ))}
                     </div>
@@ -125,37 +157,28 @@ export function generateLightGrid(x: number, y: number): string[][] {
 
 function App() {
     const [threshold, setThreshold] = useState(0.35);
-    const [lumR, setLumR] = useState(0.2126);
-    const [lumG, setLumG] = useState(0.7152);
-    const [lumB, setLumB] = useState(0.0722);
     const [weight, setWeight] = useState(400);
+    const [showContrast, setShowContrast] = useState(false);
+
     return (
         <div className="centered v-box" style={{ fontWeight: weight }}>
             <div className="section v-box">
                 <Slider min={0} max={1} step={0.01} default={threshold} onChange={setThreshold}>
                     Luminance threshold (0-1):
                 </Slider>
-                <div>Channels luminosity factors (0-1):</div>
-                <Slider min={0} max={1} step={0.0001} default={lumR} width={500} onChange={setLumR}>
-                    Red:
-                </Slider>
-                <Slider min={0} max={1} step={0.0001} default={lumG} width={500} onChange={setLumG}>
-                    Green:
-                </Slider>
-                <Slider min={0} max={1} step={0.0001} default={lumB} width={500} onChange={setLumB}>
-                    Blue:
-                </Slider>
+                <label>
+                    Show contrast values:
+                    <input type="checkbox" checked={showContrast} onChange={e => setShowContrast(e.target.checked)} />
+                </label>
                 <Slider min={100} max={900} step={100} default={weight} onChange={setWeight}>
                     Font weight (100-900):
                 </Slider>
                 <pre>
-                    <code>
-                        {`const getContrastingColor = lightOrDark.bind({threshold: ${threshold}, lumFactors: [${lumR}, ${lumG}, ${lumB}]);`}
-                    </code>
+                    <code>{`const foreground = contrastColor(backgroundHex, {threshold: ${threshold}});`}</code>
                 </pre>
             </div>
             <div className="section h-box">
-                <ColorGrid options={{ threshold, lumFactors: [lumR, lumG, lumB] }} steps={16} />
+                <ColorGrid threshold={threshold} steps={14} showContrast={showContrast} />
             </div>
         </div>
     );
