@@ -27,17 +27,16 @@ export function pickMostContrast<T extends ColorValue>(colors: T[], target: Colo
     return colors[index];
 }
 
+type Options = {
+    threshold?: number;
+    dark?: string;
+    light?: string;
+};
+
+export function contrastingTextColor(backgroundColor: ColorValue, options?: Options): string;
 export function contrastingTextColor(
     backgroundColor: ColorValue,
-    {
-        threshold = 0.35,
-        dark = "#000",
-        light = "#fff",
-    }: {
-        threshold?: number;
-        dark?: string;
-        light?: string;
-    } = {},
+    { threshold = 0.35, dark = "#000", light = "#fff" }: Options = {},
 ): string {
     let rgb = toRGB(backgroundColor);
     const brightness = colorLuminance(rgb);

@@ -2,7 +2,6 @@ lockfileVersion: 5.3
 
 specifiers:
   '@babel/core': ^7.16.5
-  '@types/color': ^3.0.2
   '@types/jest': ^27.0.3
   '@types/react': ^17.0.38
   '@types/react-dom': ^17.0.11
@@ -16,6 +15,8 @@ specifiers:
   solid-js: ^1.2.6
   solid-styled-components: ^0.27.3
   ts-jest: ^27.1.2
+  typedoc: ^0.22.10
+  typedoc-plugin-missing-exports: ^0.22.6
   typescript: ^4.5.4
   vite: ^2.7.7
   vite-plugin-html: ^2.1.2
@@ -25,7 +26,6 @@ specifiers:
 
 devDependencies:
   '@babel/core': 7.16.5
-  '@types/color': 3.0.2
   '@types/jest': 27.0.3
   '@types/react': 17.0.38
   '@types/react-dom': 17.0.11
@@ -39,6 +39,8 @@ devDependencies:
   solid-js: 1.2.6
   solid-styled-components: 0.27.3_solid-js@1.2.6
   ts-jest: 27.1.2_23cdfcab08939333322143e4faaefcdd
+  typedoc: 0.22.10_typescript@4.5.4
+  typedoc-plugin-missing-exports: 0.22.6_typedoc@0.22.10
   typescript: 4.5.4
   vite: 2.7.7
   vite-plugin-html: 2.1.2_vite@2.7.7
@@ -767,22 +769,6 @@ packages:
     resolution: {integrity: sha512-K2waXdXBi2302XUdcHcR1jCeU0LL4TD9HRs/gk0N2Xvrht+G/BfJa4QObBQZfhMdxiCpV3COl5Nfq4uKTeTnJA==}
     dependencies:
       '@babel/types': 7.16.0
-    dev: true
-
-  /@types/color-convert/2.0.0:
-    resolution: {integrity: sha512-m7GG7IKKGuJUXvkZ1qqG3ChccdIM/qBBo913z+Xft0nKCX4hAU/IxKwZBU4cpRZ7GS5kV4vOblUkILtSShCPXQ==}
-    dependencies:
-      '@types/color-name': 1.1.1
-    dev: true
-
-  /@types/color-name/1.1.1:
-    resolution: {integrity: sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==}
-    dev: true
-
-  /@types/color/3.0.2:
-    resolution: {integrity: sha512-INiJl6sfNn8iyC5paxVzqiVUEj2boIlFki02uRTAkKwAj++7aAF+ZfEv/XrIeBa0XI/fTZuDHW8rEEcEVnON+Q==}
-    dependencies:
-      '@types/color-convert': 2.0.0
     dev: true
 
   /@types/estree/0.0.39:
@@ -2845,6 +2831,10 @@ packages:
       yallist: 4.0.0
     dev: true
 
+  /lunr/2.3.9:
+    resolution: {integrity: sha512-zTU3DaZaF3Rt9rhN3uBMGQD3dD2/vFQqnvZCDv4dl5iOzq2IZQqTxu90r4E5J+nP70J3ilqVCrbho2eWaeW8Ow==}
+    dev: true
+
   /magic-string/0.25.7:
     resolution: {integrity: sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==}
     dependencies:
@@ -2866,6 +2856,12 @@ packages:
     resolution: {integrity: sha512-JmqCvUhmt43madlpFzG4BQzG2Z3m6tvQDNKdClZnO3VbIudJYmxsT0FNJMeiB2+JTSlTQTSbU8QdesVmwJcmLg==}
     dependencies:
       tmpl: 1.0.5
+    dev: true
+
+  /marked/3.0.8:
+    resolution: {integrity: sha512-0gVrAjo5m0VZSJb4rpL59K1unJAMb/hm8HRXqasD8VeC8m91ytDPMritgFSlKonfdt+rRYYpP/JfLxgIX8yoSw==}
+    engines: {node: '>= 12'}
+    hasBin: true
     dev: true
 
   /merge-anything/4.0.2:
@@ -3255,6 +3251,14 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
+  /shiki/0.9.15:
+    resolution: {integrity: sha512-/Y0z9IzhJ8nD9nbceORCqu6NgT9X6I8Fk8c3SICHI5NbZRLdZYFaB233gwct9sU0vvSypyaL/qaKvzyQGJBZSw==}
+    dependencies:
+      jsonc-parser: 3.0.0
+      vscode-oniguruma: 1.6.1
+      vscode-textmate: 5.2.0
+    dev: true
+
   /signal-exit/3.0.6:
     resolution: {integrity: sha512-sDl4qMFpijcGw22U5w63KmD3cZJfBuFlVNbVMKje2keoKML7X2UzWbc4XrmEbDwg0NXJc3yv4/ox7b+JWb57kQ==}
     dev: true
@@ -3542,6 +3546,29 @@ packages:
       is-typedarray: 1.0.0
     dev: true
 
+  /typedoc-plugin-missing-exports/0.22.6_typedoc@0.22.10:
+    resolution: {integrity: sha512-1uguGQqa+c5f33nWS3v1mm0uAx4Ii1lw4Kx2zQksmYFKNEWTmrmMXbMNBoBg4wu0p4dFCNC7JIWPoRzpNS6pFA==}
+    peerDependencies:
+      typedoc: 0.22.x
+    dependencies:
+      typedoc: 0.22.10_typescript@4.5.4
+    dev: true
+
+  /typedoc/0.22.10_typescript@4.5.4:
+    resolution: {integrity: sha512-hQYZ4WtoMZ61wDC6w10kxA42+jclWngdmztNZsDvIz7BMJg7F2xnT+uYsUa7OluyKossdFj9E9Ye4QOZKTy8SA==}
+    engines: {node: '>= 12.10.0'}
+    hasBin: true
+    peerDependencies:
+      typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x || 4.4.x || 4.5.x
+    dependencies:
+      glob: 7.2.0
+      lunr: 2.3.9
+      marked: 3.0.8
+      minimatch: 3.0.4
+      shiki: 0.9.15
+      typescript: 4.5.4
+    dev: true
+
   /typescript/4.5.4:
     resolution: {integrity: sha512-VgYs2A2QIRuGphtzFV7aQJduJ2gyfTljngLzjpfW9FoYZF6xuw1W0vW9ghCKLfcWrCFxK81CSGRAvS1pn4fIUg==}
     engines: {node: '>=4.2.0'}
@@ -3636,6 +3663,14 @@ packages:
       rollup: 2.62.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /vscode-oniguruma/1.6.1:
+    resolution: {integrity: sha512-vc4WhSIaVpgJ0jJIejjYxPvURJavX6QG41vu0mGhqywMkQqulezEqEQ3cO3gc8GvcOpX6ycmKGqRoROEMBNXTQ==}
+    dev: true
+
+  /vscode-textmate/5.2.0:
+    resolution: {integrity: sha512-Uw5ooOQxRASHgu6C7GVvUxisKXfSgW4oFlO+aa+PAkgmH89O3CXxEEzNRNtHSqtXFTl0nAC1uYj0GMSH27uwtQ==}
     dev: true
 
   /vue/3.2.26:
