@@ -1,6 +1,6 @@
 {
   "name": "counter-color",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Helps to determine what color of text goes best for a given background, light or dark (and vice versa).",
   "main": "src/index.ts",
   "publishConfig": {
@@ -8,8 +8,8 @@
     "types": "lib/index.d.ts"
   },
   "scripts": {
+    "build": "rimraf ./lib && tsc -b ./tsconfig.json",
     "build:all": "pnpm build && pnpm docs:build && pnpm demo:build && pnpm demo:copy",
-    "build": "tsc -b ./tsconfig.json",
     "test": "jest",
     "docs:build": "typedoc src/index.ts",
     "demo:dev": "vite",
@@ -39,6 +39,7 @@
     "prettier": "^2.5.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "rimraf": "^3.0.2",
     "solid-js": "^1.2.6",
     "solid-styled-components": "^0.27.3",
     "ts-jest": "^27.1.2",
