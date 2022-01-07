@@ -4,8 +4,8 @@
   "description": "Helps to determine what color of text goes best for a given background, light or dark (and vice versa).",
   "main": "src/index.ts",
   "publishConfig": {
-    "main": "lib/light-or-dark.js",
-    "types": "lib/light-or-dark.d.ts"
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts"
   },
   "scripts": {
     "build:all": "pnpm build && pnpm docs:build && pnpm demo:build && pnpm demo:copy",
