@@ -1,8 +1,15 @@
-import React, { type CSSProperties, type PropsWithChildren, RefObject, useLayoutEffect, useRef, useState } from "react";
+import React, {
+    type CSSProperties,
+    type PropsWithChildren,
+    RefObject,
+    useLayoutEffect,
+    useRef,
+    useState
+} from "react";
 import ReactDOM from "react-dom";
 import "./demo.css";
 import Color from "color";
-import { colorsContrast, contrastingTextColor, hexToRGB } from "../src";
+import { colorsContrast, counterColor, hexToRGB } from "../src";
 
 type Wrapper<T = any> = (props: PropsWithChildren<T>) => any;
 
@@ -14,7 +21,7 @@ const ColorTag: Wrapper<{
     showContrast?: boolean;
 }> = props => {
     const pct = (n: number) => ((100 * n) >> 0) + "%";
-    const color = contrastingTextColor(props.hex, { threshold: props.threshold });
+    const color = counterColor(props.hex, { threshold: props.threshold });
     const contrast = colorsContrast(props.hex, color);
     const rgba1 = `rgba(${hexToRGB(color).join(",")}, 0.3)`;
 
@@ -99,7 +106,7 @@ const ColorGrid: Wrapper<{ steps: number; threshold: number; showContrast?: bool
 
     const rowsMinContrast = (row: string[]) => {
         const contrastDiffs = row.map(color =>
-            colorsContrast(color, contrastingTextColor(color, { threshold: props.threshold })),
+            colorsContrast(color, counterColor(color, { threshold: props.threshold })),
         );
         const min = Math.min(...contrastDiffs);
         return min;
