@@ -1,13 +1,6 @@
-import React, {
-    type CSSProperties,
-    type PropsWithChildren,
-    RefObject,
-    useLayoutEffect,
-    useRef,
-    useState
-} from "react";
+import React, { type CSSProperties, type PropsWithChildren, RefObject, useLayoutEffect, useRef, useState } from "react";
 import ReactDOM from "react-dom";
-import "./demo.css";
+import "./demo.scss";
 import Color from "color";
 import { colorsContrast, counterColor, hexToRGB } from "../src";
 
@@ -166,10 +159,21 @@ function App() {
     const [threshold, setThreshold] = useState(0.35);
     const [weight, setWeight] = useState(400);
     const [showContrast, setShowContrast] = useState(false);
+    const [darkBG, setDarkBg] = useState(false);
+
+    if (darkBG) {
+        document.body.classList.add("dark");
+    } else {
+        document.body.classList.remove("dark");
+    }
 
     return (
-        <div className="centered v-box" style={{ fontWeight: weight }}>
+        <div className={`centered v-box ${darkBG ? "dark" : ""}`} style={{ fontWeight: weight }}>
             <div className="section v-box">
+                <label>
+                    Dark background:
+                    <input type="checkbox" checked={darkBG} onChange={e => setDarkBg(e.target.checked)} />
+                </label>
                 <Slider min={0} max={1} step={0.01} default={threshold} onChange={setThreshold}>
                     Luminance threshold (0-1):
                 </Slider>
