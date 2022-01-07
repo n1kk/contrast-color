@@ -1,6 +1,6 @@
 {
   "name": "counter-color",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Helps to determine what color of text goes best for a given background, light or dark (and vice versa).",
   "main": "src/index.ts",
   "repository": "github:n1kk/counter-color",
@@ -22,6 +22,11 @@
   "keywords": [
     "text",
     "color",
+    "contrast",
+    "luminocity",
+    "brightness",
+    "luminance",
+    "font color",
     "foreground"
   ],
   "files": [
