@@ -15,7 +15,7 @@ TypeScript Docs: https://n1kk.github.io/counter-color/
 
 Demo page: https://n1kk.github.io/counter-color/demo.html
 
-![demo](demo/demo.gif)
+![demo](https://github.com/n1kk/counter-color/blob/master/demo/demo.gif?raw=true)
 
 ## Usage
 

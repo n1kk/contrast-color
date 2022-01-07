@@ -159,7 +159,7 @@ function App() {
     const [threshold, setThreshold] = useState(0.35);
     const [weight, setWeight] = useState(400);
     const [showContrast, setShowContrast] = useState(false);
-    const [darkBG, setDarkBg] = useState(false);
+    const [darkBG, setDarkBg] = useState(true);
 
     if (darkBG) {
         document.body.classList.add("dark");
@@ -189,7 +189,7 @@ function App() {
                 </pre>
             </div>
             <div className="section h-box">
-                <ColorGrid threshold={threshold} steps={14} showContrast={showContrast} />
+                <ColorGrid threshold={threshold} steps={6} showContrast={showContrast} />
             </div>
         </div>
     );
