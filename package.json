@@ -1,12 +1,13 @@
 {
   "name": "counter-color",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Helps to determine what color of text goes best for a given background, light or dark (and vice versa).",
   "main": "src/index.ts",
   "publishConfig": {
     "main": "lib/index.js",
     "types": "lib/index.d.ts"
   },
+  "sideEffects": false,
   "scripts": {
     "build": "rimraf ./lib && tsc -b ./tsconfig.json",
     "build:all": "pnpm build && pnpm docs:build && pnpm demo:build && pnpm demo:copy",

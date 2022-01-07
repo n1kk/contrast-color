@@ -1,4 +1,4 @@
-# Contrast Color
+# counter-color
 
 A set of methods for working with contrasting colors.
 
@@ -11,9 +11,9 @@ Use cases:
 - Get contrast ratio between two colors
 - Check if two colors have sufficient contrast difference
 
-TypeScript Docs: https://n1kk.github.io/contrast-color/
+TypeScript Docs: https://n1kk.github.io/counter-color/
 
-Demo page: https://n1kk.github.io/contrast-color/demo.html
+Demo page: https://n1kk.github.io/counter-color/demo.html
 
 ![demo](demo/demo.gif)
 
@@ -34,7 +34,7 @@ pnpm i counter-color
 
 ### # `counterColor(targetColor, options?) => string`
 
-Get a most contrasting color for a given background (black or white).
+Get a most contrasting color for a given one. Defaults are black and white.
 
 - `targetColor`: [supported color value](#colorvalue)
 - `options`: optional object that allows you to configure:
