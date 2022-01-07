@@ -1,5 +1,5 @@
 {
-  "name": "@n1kk/contrast-color",
+  "name": "counter-color",
   "version": "0.1.0",
   "description": "Helps to determine what color of text goes best for a given background, light or dark (and vice versa).",
   "main": "src/index.ts",
@@ -28,6 +28,7 @@
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.16.5",
+    "@types/color": "^3.0.2",
     "@types/jest": "^27.0.3",
     "@types/react": "^17.0.38",
     "@types/react-dom": "^17.0.11",

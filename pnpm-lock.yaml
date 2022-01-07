@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@babel/core': ^7.16.5
+  '@types/color': ^3.0.2
   '@types/jest': ^27.0.3
   '@types/react': ^17.0.38
   '@types/react-dom': ^17.0.11
@@ -26,6 +27,7 @@ specifiers:
 
 devDependencies:
   '@babel/core': 7.16.5
+  '@types/color': 3.0.2
   '@types/jest': 27.0.3
   '@types/react': 17.0.38
   '@types/react-dom': 17.0.11
@@ -769,6 +771,22 @@ packages:
     resolution: {integrity: sha512-K2waXdXBi2302XUdcHcR1jCeU0LL4TD9HRs/gk0N2Xvrht+G/BfJa4QObBQZfhMdxiCpV3COl5Nfq4uKTeTnJA==}
     dependencies:
       '@babel/types': 7.16.0
+    dev: true
+
+  /@types/color-convert/2.0.0:
+    resolution: {integrity: sha512-m7GG7IKKGuJUXvkZ1qqG3ChccdIM/qBBo913z+Xft0nKCX4hAU/IxKwZBU4cpRZ7GS5kV4vOblUkILtSShCPXQ==}
+    dependencies:
+      '@types/color-name': 1.1.1
+    dev: true
+
+  /@types/color-name/1.1.1:
+    resolution: {integrity: sha512-rr+OQyAjxze7GgWrSaJwydHStIhHq2lvY3BOC2Mj7KnzI7XK0Uw1TOOdI9lDoajEbSWLiYgoo4f1R51erQfhPQ==}
+    dev: true
+
+  /@types/color/3.0.2:
+    resolution: {integrity: sha512-INiJl6sfNn8iyC5paxVzqiVUEj2boIlFki02uRTAkKwAj++7aAF+ZfEv/XrIeBa0XI/fTZuDHW8rEEcEVnON+Q==}
+    dependencies:
+      '@types/color-convert': 2.0.0
     dev: true
 
   /@types/estree/0.0.39:

@@ -23,20 +23,20 @@ Install:
 
 ```bash
 # npm
-npm i @n1kk/contrast-color
+npm i counter-color
 # yarn
-yarn add @n1kk/contrast-color
+yarn add counter-color
 # pnpm
-pnpm i @n1kk/contrast-color
+pnpm i counter-color
 ```
 
 ## API
 
-### # `contrastingTextColor(backgroundColor, options?) => string`
+### # `counterColor(targetColor, options?) => string`
 
-Get a contrasting text color for a gien background
+Get a most contrasting color for a given background (black or white).
 
-- `backgroundColor`: [supported color value](#colorvalue)
+- `targetColor`: [supported color value](#colorvalue)
 - `options`: optional object that allows you to configure:
   - `light` color: string
   - `dark` color: string
@@ -44,10 +44,13 @@ Get a contrasting text color for a gien background
 - _**returns**_: `string` of a color which has most contrast with the given background
 
 ```ts
-const textColor1 = contrastingTextColor("#fff"); // "#000000"
+import counterColor from "counter-color";
+
+const textColor1 = counterColor("#00F"); // "#000000"
+const textColor2 = counterColor("#0F0"); // "#FFFFFF"
 
 const options = { dark: "#222", light: "#eee", threshold: 0.4 };
-const textColor2 = contrastingTextColor("#fff", options); // "#222"
+const textColor3 = counterColor("#f00", options); // "#eee"
 ```
 
 #### ColorValue
