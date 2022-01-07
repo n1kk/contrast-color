@@ -29,3 +29,20 @@ export function toRGB(color: ColorValue): RGB {
 
     throw new Error(`Bad color value: ${typeof color} = ${color}`);
 }
+
+export function rgbToHex(rgb: RGB | number[]): string {
+    return `#` + rgb.map(_ => _.toString(16).padStart(2, "0")).join("");
+}
+
+export function decToHex(dec: number): string {
+    return rgbToHex(decToRGB(dec));
+}
+
+export function hexToDec(hex: string): number {
+    if (hex.startsWith("#")) hex = hex.substring(1);
+    return parseInt(hex, 16);
+}
+
+export function rbgToDec(rgb: RGB | number[]): number {
+    return hexToDec(rgbToHex(rgb));
+}

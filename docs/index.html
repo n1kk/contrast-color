@@ -123,36 +123,38 @@
   <h2>Utils</h2>
 </a>
 
-<a href="#-hextorgbhex-gt-r-g-b" id="-hextorgbhex-gt-r-g-b" style="color: inherit; text-decoration: none;">
-  <h3># <code>hexToRGB(hex) =&gt; [r, g, b]</code></h3>
+<a href="#-hextorgbstring-gt-number-number-number" id="-hextorgbstring-gt-number-number-number" style="color: inherit; text-decoration: none;">
+  <h3># <code>hexToRGB(string) =&gt; [number, number, number]</code></h3>
 </a>
-<p>Convert a hex color to rgb array.</p>
-<ul>
-<li><code>hex</code>: hex color value <code>#RGB</code> | <code>#RRGGBB</code> | <code>#RRGGBBAA</code></li>
-<li><em><strong>returns</strong></em>: rgb array</li>
-</ul>
-<pre><code class="language-ts"><span class="hl-7">hexToRGB</span><span class="hl-1">(</span><span class="hl-4">&quot;#fff&quot;</span><span class="hl-1">); </span><span class="hl-0">// [255, 255, 255]</span>
-</code></pre>
+<p>Convert a hex color <code>#RGB</code> | <code>#RRGGBB</code> to rgb array.</p>
 
-<a href="#-dectorgbdec-gt-r-g-b" id="-dectorgbdec-gt-r-g-b" style="color: inherit; text-decoration: none;">
-  <h3># <code>decToRGB(dec) =&gt; [r, g, b]</code></h3>
+<a href="#-dectorgbnumber-gt-number-number-number" id="-dectorgbnumber-gt-number-number-number" style="color: inherit; text-decoration: none;">
+  <h3># <code>decToRGB(number) =&gt; [number, number, number]</code></h3>
 </a>
-<p>Convert a dec color to rgb array.</p>
-<ul>
-<li><code>dec</code>: integer from 0 to 16777215</li>
-<li><em><strong>returns</strong></em>: rgb array</li>
-</ul>
-<pre><code class="language-ts"><span class="hl-7">decToRGB</span><span class="hl-1">(</span><span class="hl-8">16777215</span><span class="hl-1">); </span><span class="hl-0">// [255, 255, 255]</span>
-</code></pre>
+<p>Convert an integer color to rgb array.</p>
 
-<a href="#-torgbcolor-gt-r-g-b" id="-torgbcolor-gt-r-g-b" style="color: inherit; text-decoration: none;">
-  <h3># <code>toRGB(color) =&gt; [r, g, b]</code></h3>
+<a href="#-torgbcolor-gt-number-number-number" id="-torgbcolor-gt-number-number-number" style="color: inherit; text-decoration: none;">
+  <h3># <code>toRGB(color) =&gt; [number, number, number]</code></h3>
 </a>
 <p>Convert a <a href="#colorvalue">color values</a> to rgb array. Throws on invalid input.</p>
-<ul>
-<li><code>color</code>: <a href="#colorvalue">color values</a></li>
-<li><em><strong>returns</strong></em>: rgb array</li>
-</ul>
-<pre><code class="language-ts"><span class="hl-7">toRGB</span><span class="hl-1">(</span><span class="hl-4">&quot;#fff&quot;</span><span class="hl-1">); </span><span class="hl-0">// [255, 255, 255]</span><br/><span class="hl-7">toRGB</span><span class="hl-1">(</span><span class="hl-8">16777215</span><span class="hl-1">); </span><span class="hl-0">// [255, 255, 255]</span>
-</code></pre>
-</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/_internal_.html">&lt;internal&gt;</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-reference"><a href="modules.html#default" class="tsd-kind-icon">default</a></li><li class="tsd-kind-type-alias"><a href="modules.html#RGB" class="tsd-kind-icon">RGB</a></li><li class="tsd-kind-function"><a href="modules.html#colorLuminance" class="tsd-kind-icon">color<wbr/>Luminance</a></li><li class="tsd-kind-function"><a href="modules.html#colorsContrast" class="tsd-kind-icon">colors<wbr/>Contrast</a></li><li class="tsd-kind-function"><a href="modules.html#colorsContrastRatio" class="tsd-kind-icon">colors<wbr/>Contrast<wbr/>Ratio</a></li><li class="tsd-kind-function"><a href="modules.html#colorsHaveSufficientContrast" class="tsd-kind-icon">colors<wbr/>Have<wbr/>Sufficient<wbr/>Contrast</a></li><li class="tsd-kind-function"><a href="modules.html#counterColor" class="tsd-kind-icon">counter<wbr/>Color</a></li><li class="tsd-kind-function"><a href="modules.html#decToRGB" class="tsd-kind-icon">dec<wbr/>ToRGB</a></li><li class="tsd-kind-function"><a href="modules.html#hexToRGB" class="tsd-kind-icon">hex<wbr/>ToRGB</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#pickMostContrast" class="tsd-kind-icon">pick<wbr/>Most<wbr/>Contrast</a></li><li class="tsd-kind-function"><a href="modules.html#sRGB" class="tsd-kind-icon">sRGB</a></li><li class="tsd-kind-function"><a href="modules.html#toRGB" class="tsd-kind-icon">toRGB</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>
+
+<a href="#-rgbtohexnumber-number-number-gt-string" id="-rgbtohexnumber-number-number-gt-string" style="color: inherit; text-decoration: none;">
+  <h3># <code>rgbToHex([number, number, number]) =&gt; string</code></h3>
+</a>
+<p>Convert a rgb array to a hex color string.</p>
+
+<a href="#-dectohexnumber-gt-string" id="-dectohexnumber-gt-string" style="color: inherit; text-decoration: none;">
+  <h3># <code>decToHex(number) =&gt; string</code></h3>
+</a>
+<p>Convert an integer to a hex color string.</p>
+
+<a href="#-hextodecstring-gt-number" id="-hextodecstring-gt-number" style="color: inherit; text-decoration: none;">
+  <h3># <code>hexToDec(string) =&gt; number</code></h3>
+</a>
+<p>Convert a hex color string to an integer.</p>
+
+<a href="#-rbgtodecnumber-number-number-gt-number" id="-rbgtodecnumber-number-number-gt-number" style="color: inherit; text-decoration: none;">
+  <h3># <code>rbgToDec([number, number, number]) =&gt; number</code></h3>
+</a>
+<p>Convert a rgb array to an integer.</p>
+</div></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class="current"><a href="modules.html">Exports</a></li><li class=" tsd-kind-namespace"><a href="modules/_internal_.html">&lt;internal&gt;</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="tsd-kind-reference"><a href="modules.html#default" class="tsd-kind-icon">default</a></li><li class="tsd-kind-type-alias"><a href="modules.html#RGB" class="tsd-kind-icon">RGB</a></li><li class="tsd-kind-function"><a href="modules.html#colorLuminance" class="tsd-kind-icon">color<wbr/>Luminance</a></li><li class="tsd-kind-function"><a href="modules.html#colorsContrast" class="tsd-kind-icon">colors<wbr/>Contrast</a></li><li class="tsd-kind-function"><a href="modules.html#colorsContrastRatio" class="tsd-kind-icon">colors<wbr/>Contrast<wbr/>Ratio</a></li><li class="tsd-kind-function"><a href="modules.html#colorsHaveSufficientContrast" class="tsd-kind-icon">colors<wbr/>Have<wbr/>Sufficient<wbr/>Contrast</a></li><li class="tsd-kind-function"><a href="modules.html#counterColor" class="tsd-kind-icon">counter<wbr/>Color</a></li><li class="tsd-kind-function"><a href="modules.html#decToHex" class="tsd-kind-icon">dec<wbr/>To<wbr/>Hex</a></li><li class="tsd-kind-function"><a href="modules.html#decToRGB" class="tsd-kind-icon">dec<wbr/>ToRGB</a></li><li class="tsd-kind-function"><a href="modules.html#hexToDec" class="tsd-kind-icon">hex<wbr/>To<wbr/>Dec</a></li><li class="tsd-kind-function"><a href="modules.html#hexToRGB" class="tsd-kind-icon">hex<wbr/>ToRGB</a></li><li class="tsd-kind-function tsd-has-type-parameter"><a href="modules.html#pickMostContrast" class="tsd-kind-icon">pick<wbr/>Most<wbr/>Contrast</a></li><li class="tsd-kind-function"><a href="modules.html#rbgToDec" class="tsd-kind-icon">rbg<wbr/>To<wbr/>Dec</a></li><li class="tsd-kind-function"><a href="modules.html#rgbToHex" class="tsd-kind-icon">rgb<wbr/>To<wbr/>Hex</a></li><li class="tsd-kind-function"><a href="modules.html#sRGB" class="tsd-kind-icon">sRGB</a></li><li class="tsd-kind-function"><a href="modules.html#toRGB" class="tsd-kind-icon">toRGB</a></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="assets/main.js"></script></body></html>

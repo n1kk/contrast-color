@@ -127,36 +127,30 @@ colorLuminance("#F00"); // 0.21...
 
 ## Utils
 
-### # `hexToRGB(hex) => [r, g, b]`
+### # `hexToRGB(string) => [number, number, number]`
 
-Convert a hex color to rgb array.
+Convert a hex color `#RGB` | `#RRGGBB` to rgb array.
 
-- `hex`: hex color value `#RGB` | `#RRGGBB` | `#RRGGBBAA`
-- _**returns**_: rgb array
+### # `decToRGB(number) => [number, number, number]`
 
-```ts
-hexToRGB("#fff"); // [255, 255, 255]
-```
+Convert an integer color to rgb array.
 
-### # `decToRGB(dec) => [r, g, b]`
-
-Convert a dec color to rgb array.
-
-- `dec`: integer from 0 to 16777215
-- _**returns**_: rgb array
-
-```ts
-decToRGB(16777215); // [255, 255, 255]
-```
-
-### # `toRGB(color) => [r, g, b]`
+### # `toRGB(color) => [number, number, number]`
 
 Convert a [color values](#colorvalue) to rgb array. Throws on invalid input.
 
-- `color`: [color values](#colorvalue)
-- _**returns**_: rgb array
+### # `rgbToHex([number, number, number]) => string`
 
-```ts
-toRGB("#fff"); // [255, 255, 255]
-toRGB(16777215); // [255, 255, 255]
-```
+Convert a rgb array to a hex color string.
+
+### # `decToHex(number) => string`
+
+Convert an integer to a hex color string.
+
+### # `hexToDec(string) => number`
+
+Convert a hex color string to an integer.
+
+### # `rbgToDec([number, number, number]) => number`
+
+Convert a rgb array to an integer.
